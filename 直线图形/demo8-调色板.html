@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="https://w3.org/1999/xhtml">
+  <head>
+    <title></title>
+    <meta charset='utf-8'>
+    <script type='text/javascript'>
+    function $$(id){
+        return document.getElementById(id);
+    }
+
+    window.onload = function(){
+      //1.获取canvas对象
+      var cnv = document.getElementById('canvas');
+      //2.获取上下文环境对象context
+      var cxt = cnv.getContext('2d');
+      var scare = 255/6;
+      var h = 30;
+      for(var i=0;i<6;i++){
+        for(var j=0;j<6;j++){
+          cxt.fillStyle = `rgb(${Math.floor(i*scare)},${Math.floor(j*scare)},0)`;
+          cxt.fillRect(i*h, j*h, h, h);
+        }
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <canvas id='canvas' width = '180px' height='180px' style="border:1px dashed gray;"></canvas>
+  </body>
+</html>

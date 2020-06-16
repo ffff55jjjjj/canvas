@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="https://w3.org/1999/xhtml">
+
+<head>
+  <title></title>
+  <meta charset='utf-8'>
+  <script type='text/javascript'>
+
+    function $$(id) {
+      return document.getElementById(id);
+    }
+
+    window.onload = function () {
+      generate(3);
+
+      var btc = $$("clearBt");
+      btc.onclick = clear;
+      var g = $$("generate");
+      g.onclick = gen;
+      
+    }
+
+    /**
+    * 绘制多边形
+    * n：表示几边
+    * dx,dy表示多边形中心坐标
+    * size:表示n边形的大小
+    */
+    function createPolygon(cxt,n,dx,dy,size){
+        cxt.beginPath();
+        var degree = (2*Math.PI)/n;
+        for(var i=0;i<n;i++){
+          var x = Math.cos(i*degree);
+          var y = Math.sin(i*degree);
+          cxt.lineTo(x*size + dx,y*size +dy);
+        }
+        cxt.closePath();
+    }
+
+    function generate(n){
+      console.log(n);
+      var cnv = $$("canvas");
+      var cxt = cnv.getContext('2d');
+      //调用自定义方法createPolygon()
+      createPolygon(cxt,n,100,75,50);
+      cxt.fillStyle = 'HotPink';
+      cxt.fill();
+    }
+
+    function clear(){
+      var cnv = $$("canvas");
+      var cxt = cnv.getContext('2d');
+      cxt.clearRect(0,0,150,150);
+    }
+
+    function gen(){
+      clear();
+      var n = $$('nb').value;
+      generate(n);
+    }
+  </script>
+</head>
+
+<body>
+  <canvas id='canvas' width='200px' height='150px' style="border:1px dashed gray;"></canvas>
+  <hr>
+  <button id='clearBt' >清除</button>
+  <hr>
+  <input type="number" id = 'nb' placeholder="请输入边数">
+  <hr>
+  <button id='generate'>生成多边形</button>
+</body>
+
+</html>
