@@ -1,0 +1,33 @@
+      <!DOCTYPE html>
+      <html lang="en">
+      
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script type="text/javascript">
+          function $$(id) {
+            return document.getElementById(id);
+          }
+          window.onload = function () {
+            cnv = $$("canvas");
+            cxt = cnv.getContext('2d');
+            //绘制三次贝塞尔曲线
+            cxt.moveTo(20,80);
+            /*
+              cxt.bezierCurveTo(cx1,cy1,cx2,cy2,x2,y2);
+              (cx1,cy1)控制点1
+              (cx2,cy2)控制点2
+              (x2,y2)结束点
+            */
+            cxt.bezierCurveTo(20,20,120,120,120,60);
+            cxt.stroke();
+          }
+        </script>
+      </head>
+      
+      <body>
+        <canvas id='canvas' style="border:1px dashed gray" width="200px" height="150px"></canvas>
+      </body>
+      
+      </html>

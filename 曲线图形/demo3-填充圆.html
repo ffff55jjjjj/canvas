@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <script type='text/javascript'>
+    function $$(id){
+      return document.getElementById(id);
+    }
+    window.onload = function(){
+      var cnv = $$('canvas');
+      var cxt = cnv.getContext("2d");
+      //半圆
+      cxt.beginPath();
+      cxt.arc(80,80,50,0,180*Math.PI/180,true);
+      cxt.closePath();
+      //描边
+      cxt.fillStyle = 'HotPink';
+      cxt.fill();
+      //整园
+      cxt.beginPath();
+      cxt.arc(120,80,50,0,360*Math.PI/180,true);
+      cxt.closePath();
+      //描边
+      cxt.fillStyle = 'Purple';
+      cxt.fill();
+    }
+    /**
+      cxt.beginPath();
+      cxt.arc(x,y,半径,开始角度,结束角度,anticlockwise);
+      cxt.closePath();
+      1.(x,y)圆心坐标
+      2.开始角度和结束角度以“弧度”为单位，例如180°就应该写成Math.PI。
+      3.对于角度实际开发中推荐这种写法：度数*Math.PI/180 。因为这种写法更容易一眼看出来是多少度
+      4.anticlockwise：是一个布尔值，true表示按逆时针方向开始绘制，反之按顺时针方向开始绘制
+    */
+  </script>
+</head>
+<body>
+    <canvas id="canvas" width="200px" height="150px" style="border:1px dashed gray;"></canvas>
+</body>
+</html>

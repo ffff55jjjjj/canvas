@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript">
+     function $$(id){
+      return document.getElementById(id);
+    }
+    window.onload = function(){
+      cnv = $$("canvas");
+      cxt = cnv.getContext('2d');
+      createRoundedRect(cxt,100,100,10,20,20);
+      
+      cxt.fillStyle = 'HotPink';
+      cxt.fill();
+    }
+
+    /*
+      careteRoundedRect()用于绘制圆角矩形
+      width、height分别表示宽和长
+      r表示圆角的半径
+      (offsetX,offsetY)表示左上角定点坐标
+    */
+    function createRoundedRect(cxt,width,height,r,offsetX,offsetY){
+      cxt.beginPath();
+      cxt.moveTo(offsetX+r,offsetY);
+      cxt.lineTo(offsetX+width-r,offsetY);
+      cxt.arcTo(offsetX+width,offsetY,offsetX+width,offsetY+r,r);
+      cxt.lineTo(offsetX+width,offsetY+height-r);
+      cxt.arcTo(offsetX+width,offsetY+height,offsetX+width-r,offsetY+height,r);
+      cxt.lineTo(offsetX+r,offsetY+height);
+      cxt.arcTo(offsetX,offsetY+height,offsetX,offsetY+height-r,r);
+      cxt.lineTo(offsetX,offsetY+r);
+      cxt.arcTo(offsetX,offsetY,offsetX+r,offsetY,r);
+      cxt.closePath();
+      
+    }    
+  </script>
+</head>
+<body>
+  <canvas id='canvas' style="border:1px dashed gray" width="200px" height="150px"></canvas>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript">
+    function $$(id) {
+      return document.getElementById(id);
+    }
+    window.onload = function () {
+      cnv = $$("canvas");
+      cxt = cnv.getContext('2d');
+      cxt.moveTo(30,120);
+      /*
+        cxt.quadraticCurveTo(dx,dy,x2,y2);
+        (dx,dy):控制点坐标
+        (x2,y2):结束点左边
+        开始点坐标为开始是cxt的坐标，用moveTo()来定义
+      */
+      cxt.quadraticCurveTo(100,20,160,120);
+      cxt.stroke();
+    }
+  </script>
+</head>
+
+<body>
+  <canvas id='canvas' style="border:1px dashed gray" width="200px" height="150px"></canvas>
+</body>
+
+</html>
