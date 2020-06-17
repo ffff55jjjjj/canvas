@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type='text/javascript'>
+    /*
+      lineWidth:定义线条宽度
+      lineCap:定义线帽样式
+        Butt:默认线帽
+        Round:圆形线帽
+        Square:正方形线帽
+      lineJoin:定义两条线交接处样式
+      setLineDash():定义线条的虚实样式
+    */
+
+    function $$(id){
+      return document.getElementById(id);
+    }
+
+    window.onload = function(){
+      var cvn = $$('canvas');
+      var cxt = cvn.getContext('2d');
+      cxt.lineWidth = 16;
+      //默认线帽
+      cxt.moveTo(20,20);
+      cxt.lineTo(180,20);
+      cxt.stroke();
+
+      //圆形线帽
+      cxt.beginPath()
+      cxt.lineCap = 'round';
+      cxt.moveTo(20,70);
+      cxt.lineTo(180,70);
+      cxt.stroke();
+
+      //方形线帽
+      cxt.beginPath()
+      cxt.lineCap = 'square';
+      cxt.moveTo(20,120);
+      cxt.lineTo(180,120);
+      cxt.stroke();
+    }
+  </script>
+</head>
+<body>
+  <canvas id="canvas" width="200px" height="150px" style="border:1px dashed gray;"></canvas>
+</body>
+</html>
